@@ -7,22 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryDTO {
+public class BannerDTO {
 
     private Long id;
-
-    private String name;
-
-    private Long parentId;
 
     private String imageUrl;
 
     private String description;
-
-    private Integer level;
-
-    private String iconUrl;
-
-    private boolean isSpecial;
-
 }

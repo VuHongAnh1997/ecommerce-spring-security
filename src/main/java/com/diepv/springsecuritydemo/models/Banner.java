@@ -9,32 +9,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @NoArgsConstructor
-public class Category {
+@Data
+public class Banner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
+    @Column(name = "banner_id")
     private Long id;
-
-    @Column(name = "category_name")
-    private String name;
-
-    @Column(name = "parent_category_id")
-    private Long parentId;
 
     @Column(name = "image_url")
     private String imageUrl;
 
     private String description;
-
-    private Integer level;
-
-    @Column(name = "icon_url")
-    private String iconUrl;
-
-    @Column(name = "is_special")
-    private boolean isSpecial;
-
 }

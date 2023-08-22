@@ -11,17 +11,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Color {
+public class Size {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "color_id")
-    private Long colorId;
+    @Column(name = "size_id")
+    private Long sizeId;
 
-    @Column(name = "color_name")
-    private String colorName;
-
-    @Column(name = "image_url")
-    private String imageUrl;
+    @Column(name = "size_name")
+    private String sizeName;
 
 }

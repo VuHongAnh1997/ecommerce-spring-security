@@ -2,12 +2,17 @@ package com.diepv.springsecuritydemo.models;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,6 +25,8 @@ public class Product {
     @Column(name = "product_id")
     private Long id;
 
+    private String code;
+
     @Column(name = "product_name")
     private String name;
 
@@ -27,12 +34,13 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne
-    @JoinColumn(name = "color_id")
-    private Color color;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "product_id")
+    private Set<Color> colors = new HashSet<>();
 
-    @Column(name = "product_size")
-    private String size;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "product_id")
+    private Set<Size> sizes = new HashSet<>();
 
     @Column(name = "product_price")
     private BigDecimal price;
@@ -55,6 +63,13 @@ public class Product {
     @Column(name = "product_updated_at")
     private LocalDateTime updatedAt;
 
+    @Column(name = "is_featured")
     private boolean isFeatured;
+
+    @Column(name = "sales_quantity")
+    private int salesQuantity;
+
+    @Column(name = "is_special")
+    private boolean isSpecial;
 
 }

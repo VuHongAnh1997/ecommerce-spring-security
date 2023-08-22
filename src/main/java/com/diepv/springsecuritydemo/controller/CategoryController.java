@@ -30,4 +30,14 @@ public class CategoryController {
     public ResponseEntity<?> getRootCategories() {
         return ResponseEntity.ok(categoryService.getRootCategories());
     }
+
+    @GetMapping()
+    public ResponseEntity<?> getAllCategories() {
+        return ResponseEntity.ok(categoryService.getAllCategories());
+    }
+
+    @GetMapping("/special")
+    public ResponseEntity<?> getSpecialCategories() {
+        return ResponseEntity.ok(categoryService.getSpecialCategories());
+    }
 }
